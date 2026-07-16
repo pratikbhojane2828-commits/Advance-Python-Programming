@@ -3,6 +3,7 @@
 class library:
     name_list=[]
     book_list=[]
+    books=["basic of python","basic of dsa","basic of java ","basic of c++"]
     def registration(self):
         name=input("enter your name=")
         self.name_list.append(name)
@@ -14,13 +15,21 @@ class library:
         print("Adding book Succesfully!!!!")
 
     def borrowing_book(self):
-        self.books=["1.Basic of python","2.basic of dsa","3.basic of java ","4.basic of c++"]
-        print("select your book:")
+        print(self.books)
+        print("Available books:")
         for i in self.books:
-            print(i)
-
+              print(i)
+        self.book_namee=input("select your book:")
+        self.book_namee.lower()
+        if self.book_namee in self.books:
+            self.books.remove(self.book_namee)
+            print("book borrowed succesfull")
+        else:
+            print("book is not avilable")
+       
     def returning_book(self):
         self.returning_book_name=input("enetr your returning bopok name=")
+        self.books.append(self.returning_book_name)
         print("returning book succesfulll")
 
 
@@ -44,6 +53,7 @@ while(True):
     elif number==4:
             obj.returning_book()
     else:
+            print("Thank you!!!")
             break
 
 
