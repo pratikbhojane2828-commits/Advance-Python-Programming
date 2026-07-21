@@ -44,3 +44,49 @@ def numbers():
         pass
 
 numbers()
+#age validation
+def validate_age(func):
+    def wrapper(age):
+        if age>=18:
+            func(age)
+        else:
+            print("not eligible")
+    return wrapper
+
+
+@validate_age
+def vote(age):
+    print("eligible vote")
+
+vote(18)
+vote(15)
+#exception handle
+def exception(func):
+    def wrapper():
+        try:
+            func()
+        except Exception as e:
+            print("error:",e)
+    return wrapper
+@exception
+def division():
+    print(10/0)
+
+division()
+
+#admin
+user_role="admin"
+def admin(func):
+    def wrapper():
+        if user_role=="admin":
+            func()
+        else:
+            print("accceesed denied")
+    return wrapper
+
+@admin
+def delete_record():
+    print("record deleted")
+
+
+delete_record()
