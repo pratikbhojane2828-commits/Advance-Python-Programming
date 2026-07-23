@@ -1,0 +1,33 @@
+def decorator(func):
+    def wrapper(self):
+        print("=======Report=====")
+        func(self)
+        print("=============")
+    return wrapper
+
+class student_report:
+    templates=[]
+    #instance method
+    def __init__(self,name,clas,student_id):
+       self.name=name
+       self.clas=clas
+       self.student_id=student_id
+       #class method
+    @classmethod
+    def add_template(cls,template):
+        cls.templates.append(template)
+    #magic method
+    def __str__(self):
+        return ("name:",self.name,"\nstudent classs:",self.clas,"\n student_id=",self.student_id)
+
+student_report.add_template("Student report")
+
+@decorator
+def show(self):
+    name=input("enter the name=")
+    cls=input("enter the class=")
+    student_id=input("enter the student id=")
+    print("template:",student_report.templates)
+    s1=student_report(name,cls,student_id)
+
+show()
