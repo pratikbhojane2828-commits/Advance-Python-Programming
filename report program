@@ -1,33 +1,40 @@
 def decorator(func):
     def wrapper(self):
-        print("=======Report=====")
+        print("="*20,"Report","="*20)
         func(self)
-        print("=============")
+        print("="*40)
     return wrapper
 
 class student_report:
     templates=[]
     #instance method
-    def __init__(self,name,clas,student_id):
-       self.name=name
-       self.clas=clas
-       self.student_id=student_id
-       #class method
+    def __init__(self,student_id,name,date_of_birth,gender,home_adress):
+        self.student_id=student_id
+        self.name=name
+        self.date_of_birth=date_of_birth
+        self.gender=gender
+        self.home_adress=home_adress
+     
+    #class method
     @classmethod
     def add_template(cls,template):
         cls.templates.append(template)
     #magic method
     def __str__(self):
-        return ("name:",self.name,"\nstudent classs:",self.clas,"\n student_id=",self.student_id)
+        return f"student ID:{self.student_id}\nName:{self.name}\nDate of birth:{self.date_of_birth}\nGender:{self.gender}\nHome adress:{self.home_adress}"
+
+    @decorator
+    def show(self):
+        print(self)
 
 student_report.add_template("Student report")
+student_id=input("Enter the student id=")
+name=input("Enter the Full name=")
+date_of_birth=input("Enter the date of birth:")
+gender=input("Gender:")
+home_adress=input("Enter your home adress:")
 
-@decorator
-def show(self):
-    name=input("enter the name=")
-    cls=input("enter the class=")
-    student_id=input("enter the student id=")
-    print("template:",student_report.templates)
-    s1=student_report(name,cls,student_id)
 
-show()
+s1=student_report(student_id,name,date_of_birth,gender,home_adress)
+print("\nTemplate:",student_report.templates)
+s1.show()
