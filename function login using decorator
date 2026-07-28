@@ -1,0 +1,16 @@
+2. Function Call Logger
+Develop a decorator that logs the name of the function and the time at which it is called before executing the function.
+Logging using decorators.
+
+from datetime import datetime
+def timer(func):
+    def wrapper():
+        print("function called at:",datetime.now())
+        return func()
+    return wrapper
+
+@timer
+def time():
+    print("hello,user")
+
+time()
