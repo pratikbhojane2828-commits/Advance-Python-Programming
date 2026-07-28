@@ -1,0 +1,18 @@
+#1. Login Authentication
+#Design a Python program using a decorator to verify whether a user is logged in before allowing access to a protected function. If the user is not logged in, display an appropriate message.
+#Decorator for access control.
+
+logged_in=True
+def login_required(func):
+    def wrapper():
+        if logged_in:
+            func()
+        else:
+            print("please login first")
+    return wrapper
+
+@login_required
+def profile():
+    print("welcome to your profile")
+
+profile()
