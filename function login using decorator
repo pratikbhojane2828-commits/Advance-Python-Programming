@@ -11,6 +11,6 @@ def timer(func):
 
 @timer
 def time():
-    print("hello,user")
+    print("hello,pratik")
 
 time()
