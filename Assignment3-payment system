@@ -1,37 +1,60 @@
 class creditcard:
+    def __init__(self,cardnumber):
+        self.cardnumber=cardnumber  
     def pay(self,amount):
-        print(f"Paid {amount}rupee using credit card")
+         print(f"Paid {amount} rupee using credit card")
+         
+        
 class Upi:
+    def __init__(self,upi_id):
+            self.upi_id=upi_id
     def pay(self,amount):
-        print(f"Paid {amount}rupee using upi")
+        print(f"Paid {amount} rupee using upi")
 class cash:
-    def pay(self,amount):
-        print(f"Paid {amount}rupee using cash")
+   def pay(self,amount):
+        print(f"Paid {amount} rupee using cash")
 class moneytransfer:
+    def __init__(self,transfer_id):
+            self.trasnfer_id=transfer_id
     def pay(self,amount):
-        print(f"Paid {amount}rupee  using money tranfer")
+        print(f"Paid {amount} rupee  using money tranfer")
 
 class Paymentt:
     def __init__(self,method):
         self.method=method
     def make_payment(self,amount):
         self.method.pay(amount)
+while(True):
+    print("\n!!!!welcome to payment method!!!!!")
+    print("1.credit card\n2.upi\n3.cash\n4.money transfer\n5.exit")
+    choice=int(input("Enter payment method="))
+    if choice==1:
+        cardnumber=input("please enter the card number=")
+        amount=int(input("Enter the amount:$"))
+        method=creditcard(cardnumber)
 
+    elif choice==2:
+        upi_id=input("enter your upi_id=")
+        amount=int(input("Enter the amount:$"))
+        method=Upi(upi_id)
+    elif choice==3:
+        amount=int(input("Enter the amount:$"))
+        method=cash()
+    elif choice==4:
+        transfer_id=input("enter your trasnfer id=")
+        amount=int(input("Enter the amount:$"))
+        method=moneytransfer(transfer_id)
+    elif choice==5:
+        print("exit successfully")
+        break
+    else:
+        print("Invalid input")
 
-choice=input("Enter payment method(creditcard,upi,cash,moneytranfer=")
-amount=int(input("Enter the amount:"))
+    payment=Paymentt(method)
+    payment.make_payment(amount)
 
-if choice.lower()=="creditcard":
-    method=creditcard()
-elif choice.lower()=="upi":
-    method=Upi()
-elif choice.lower()=="cash":
-    method=cash()
-elif choice.lower()=="moneytransfer":
-    method=moneytransfer()
-else:
-    print("Invalid input")
-
-
-payment=Paymentt(method)
-payment.make_payment(amount)
+    s=input("\nIf you want to continue(yes or no)=")
+    if s.lower()=="yes":
+            pass
+    else:
+            break
