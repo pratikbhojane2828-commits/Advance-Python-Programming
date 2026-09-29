@@ -1,0 +1,20 @@
+import numpy as np
+
+#creating array
+arr=np.arange(1,11)
+print("Array:",arr)
+
+#slicing operation on array
+print("first 5 element in array:",arr[:5])
+print("last 5 element in array:",arr[5:])
+
+#statistical measure
+print("sum:",np.sum(arr))
+print("mean:",np.mean(arr))
+print("max:",np.max(arr))
+print("min:",np.min(arr))
+
+#bordcasting
+
+arr+=6
+print("array after adding 6:",arr)
